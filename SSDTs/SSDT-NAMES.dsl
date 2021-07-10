@@ -5,7 +5,7 @@
  * Assigned various ACPI device names to undefined PCI devices in IODeviceTree list.
  *
  * KEXT REFERENCES:
- * /System/Library/Extensions/AppleIntelPCHPMC.kext/Contents/Info.plist
+ * No macOS kext reference found.
  *
  * DefinitionBlock (AMLFileName, TableSignature, ComplianceRevision, OEMID, TableID, OEMRevision)
  *
@@ -58,6 +58,18 @@ DefinitionBlock ("SSDT-NAMES.aml", "SSDT", 2, "OC", "NAMES", 0x00000000)
 //              {
 //                  "pci-device-hidden", Buffer (0x08) {0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00}
 //              })
+//          }
+
+//          Method (_STA, 0, NotSerialized)  // _STA: Status
+//          {
+//              If (_OSI ("Darwin"))
+//              {
+//                  Return (0x0F)
+//              }
+//              Else
+//              {
+//                  Return (Zero)
+//              }
 //          }
         }
     }
