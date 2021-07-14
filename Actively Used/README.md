@@ -88,23 +88,24 @@ Allows using `CTRL+Enter` and `CTRL+Index` keyboard shortcuts that can change th
 
 The following changes (either additions or removals) are present in each configuration file per the respective OpenCore release:
 
-### OpenCore v0.6.9 Update
+### OpenCore v0.7.0 Update
 
-A handful of updates with new keys added:
+Some more new keys were added again:
 
-* UEFI → AppleInput → changed key: `CustomDelays` type to boolean as "false"
-* UEFI → AppleInput → updated key: `KeyInitialDelay` default value to "50" integer
-* UEFI → Quirks → added new key: `EnableVectorAcceleration` as "false" boolean
-* UEFI → Quirks → added new key: `ForgeUefiSupport` as "false" boolean
-* UEFI → Quirks → added new key: `ReloadOptionRoms` as "false" boolean
+* Kernel → Quirks → added new key: `ProvideCurrentCpuInfo` as "false" boolean
+* Misc → Security → added new key: `AllowToggleSip` as "false" boolean
+* Misc → Tools → added the required key `Flavour` in all tool entries as "Auto" string
+* NVRAM → Add → `7C436110-AB2A-4BBB-A880-FE41995C9F82` key: included `ForceDisplayRotationInEFI` parameter
+* NVRAM → Delete → `7C436110-AB2A-4BBB-A880-FE41995C9F82` key: included `ForceDisplayRotationInEFI` parameter
+* PlatformInfo → Generic: renamed key from `AdviseWindows` to `AdviseFeatures` per requirement
+* UEFI → Output → changed key: `GopPassThrough` type from boolean to string as "Disabled"
+* UEFI → ProtocolOverrides → added new key: `AppleEg2Info` as "false" boolean
 
 **Personal changes:**
 
-* Kernel → Add → removed completely kext `AirportItlwm_Catalina.kext` reference
-* Kernel → Add → renamed kext `AirportItlwm_BigSur.kext` to `AirportItlwm.kext`
-* Kernel → Quirks → changed value: `PowerTimeoutKernelPanic` to "false" boolean
-* Misc → Tools → disabled entry: `ControlMsrE2.efi` as this does not work from Picker
-* UEFI → Audio → set value of key: `AudioDevice` to audio device `PciRoot(0x0)/Pci(0x1f,0x3)`
+* ACPI → Delete → included two samples of drop tables such as `CpuPm` and `Cpu0Ist` for possible later use
+* DeviceProperties → `PciRoot(0x0)/Pci(0x14,0x3)` → added new section: Intel WLAN with keys `AAPL,slot-name`, `device_type`, `model` etc.
+* Kernel → Add → changed order of some kexts, placing `USBPorts.kext` before AirportItlwm and IntelBluetooth kexts
 
 **For all previous configuration history see → [Updates](Updates.md)**
 

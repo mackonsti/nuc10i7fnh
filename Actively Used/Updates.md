@@ -2,6 +2,25 @@
 
 The following changes (either additions or removals) are present in each configuration file per the respective OpenCore release:
 
+## OpenCore v0.7.0 Update
+
+Some more new keys were added again:
+
+* Kernel → Quirks → added new key: `ProvideCurrentCpuInfo` as "false" boolean
+* Misc → Security → added new key: `AllowToggleSip` as "false" boolean
+* Misc → Tools → added the required key `Flavour` in all tool entries as "Auto" string
+* NVRAM → Add → `7C436110-AB2A-4BBB-A880-FE41995C9F82` key: included `ForceDisplayRotationInEFI` parameter
+* NVRAM → Delete → `7C436110-AB2A-4BBB-A880-FE41995C9F82` key: included `ForceDisplayRotationInEFI` parameter
+* PlatformInfo → Generic: renamed key from `AdviseWindows` to `AdviseFeatures` per requirement
+* UEFI → Output → changed key: `GopPassThrough` type from boolean to string as "Disabled"
+* UEFI → ProtocolOverrides → added new key: `AppleEg2Info` as "false" boolean
+
+**Personal changes:**
+
+* ACPI → Delete → included two samples of drop tables such as `CpuPm` and `Cpu0Ist` for possible later use
+* DeviceProperties → `PciRoot(0x0)/Pci(0x14,0x3)` → added new section: Intel WLAN with keys `AAPL,slot-name`, `device_type`, `model` etc.
+* Kernel → Add → changed order of some kexts, placing `USBPorts.kext` before AirportItlwm and IntelBluetooth kexts
+
 ## OpenCore v0.6.9 Update
 
 A handful of updates with new keys added:
@@ -37,10 +56,10 @@ Moreover, the following changes were performed in this configuration file:
 * ACPI → Patch → added new rename patch `_OSI` to `XOSI` system-wide to be used with `SSDT-XOSI.aml` above
 * ACPI → Patch → added new rename patch `GPRW` to `XPRW` system-wide but **disabled** it just like `SSDT-GPRW.aml` above
 * ACPI → Patch → added new rename patch `SAT0` to `SATA` system-wide just for aesthetic reasons in IORegistry
-* DeviceProperties → PciRoot(0x0)/Pci(0x2,0x0) → added new key: `AAPL,GfxYTile` with default value `AQAAAA==`
-* DeviceProperties → PciRoot(0x0)/Pci(0x2,0x0) → added new key: `igfxfw` with default value `AgAAAA==`
-* DeviceProperties → PciRoot(0x0)/Pci(0x1f,0x0) → added new section for SMC reading via `ec-device` key as "Intel_EC_V9" string
-* DeviceProperties → PciRoot(0x0)/Pci(0x1f,0x3) → added new key: `hda-gfx` as "onboard-1" string
+* DeviceProperties → `PciRoot(0x0)/Pci(0x2,0x0)` → added new key: `AAPL,GfxYTile` with default value `AQAAAA==`
+* DeviceProperties → `PciRoot(0x0)/Pci(0x2,0x0)` → added new key: `igfxfw` with default value `AgAAAA==`
+* DeviceProperties → `PciRoot(0x0)/Pci(0x1f,0x0)` → added new section for SMC reading via `ec-device` key as "Intel_EC_V9" string
+* DeviceProperties → `PciRoot(0x0)/Pci(0x1f,0x3)` → added new key: `hda-gfx` as "onboard-1" string
 * Kernel → Add → enabled `SMCSuperIO.kext` as it is now supported (see added **DeviceProperties** section above)
 * Misc → Tools → added an additional `ResetSystem.efi` tool entry as a "Cold Reset" action
 * Misc → Tools → removed `CFGLock.efi` tool and replaced it with the official `ControlMsrE2.efi` tool
