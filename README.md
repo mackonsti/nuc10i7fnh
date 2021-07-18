@@ -104,6 +104,7 @@ For the most basic but _required_ BIOS settings, as well as previous firmware re
 * Embedded Intel LAN interface works with [IntelMausi](https://github.com/acidanthera/IntelMausi/releases);
 * Embedded Intel WLAN module works with [OpenIntelWireless](https://github.com/OpenIntelWireless/itlwm/releases);
 * Embedded Intel BTLE module detected with [IntelBluetoothFirmware](https://github.com/OpenIntelWireless/IntelBluetoothFirmware/releases);
+* CPU fan readings work with `ec-device` as `Intel_EC_V9` with [VirtualSMC](https://github.com/acidanthera/VirtualSMC/releases);
 * Integrated SDXC Card reader is not compatible; it is disabled in BIOS;
 * Sleep/Wake both work without issues; see "Power" section in [Hackintool](https://github.com/headkaze/Hackintool/releases);
 * Both NVMe and SSD SATA interfaces work with no effort nor kext needed.
@@ -163,8 +164,8 @@ The above active and working USB ports are listed in Hackintool when the two *in
 
 Support for the NUC's embedded chipset **ITE IT5571** has been added in [VirtualSMC](https://github.com/acidanthera/VirtualSMC/releases) (and more specifically `SMCSuperIO.kext`) since version 1.2.2 thanks to its developers. The required method is to inject the needed property `<key>ec-device</key>` and the correct identifier that corresponds to the NUC's model/generation own **LPC Controller** device (see [here](https://github.com/acidanthera/VirtualSMC/blob/master/Docs/EmbeddedControllers.md)). For this NUC, the value is `<string>Intel_EC_V9</string>` thus enabling CPU fan readings in any monitoring tool.
 
+![BigSur](Various/BigSur.png)
+
 ![AmorphousDiskMark](Various/AmorphousDiskMark.png)
 
 ![PowerGadget](Various/PowerGadget.png)
-
-![BigSur](Various/BigSur.png)

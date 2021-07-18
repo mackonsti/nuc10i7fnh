@@ -2,13 +2,24 @@
 
 The following changes (either additions or removals) are present in each configuration file per the respective OpenCore release:
 
+## OpenCore v0.7.1 Update
+
+The transition to this new version brought minimal changes:
+
+* ACPI → Quirks → added new key: `SyncTableIds` as "false" boolean
+* Kernel → Scheme → added new key: `CustomKernel` as "false" boolean
+
+**Personal changes:**
+
+* Added boot argument `msgbuf=1048576` increasing the [kernel message buffer size](https://dortania.github.io/OpenCore-Install-Guide/troubleshooting/kernel-debugging.html#config-plist-setup) for improved debugging during boot
+
 ## OpenCore v0.7.0 Update
 
 Some more new keys were added again:
 
 * Kernel → Quirks → added new key: `ProvideCurrentCpuInfo` as "false" boolean
 * Misc → Security → added new key: `AllowToggleSip` as "false" boolean
-* Misc → Tools → added the required key `Flavour` in all tool entries as "Auto" string
+* Misc → Tools → added the required key `Flavour` in all **tool** entries as "Auto" string
 * NVRAM → Add → `7C436110-AB2A-4BBB-A880-FE41995C9F82` key: included `ForceDisplayRotationInEFI` parameter
 * NVRAM → Delete → `7C436110-AB2A-4BBB-A880-FE41995C9F82` key: included `ForceDisplayRotationInEFI` parameter
 * PlatformInfo → Generic: renamed key from `AdviseWindows` to `AdviseFeatures` per requirement
@@ -18,7 +29,7 @@ Some more new keys were added again:
 **Personal changes:**
 
 * ACPI → Delete → included two samples of drop tables such as `CpuPm` and `Cpu0Ist` for possible later use
-* DeviceProperties → `PciRoot(0x0)/Pci(0x14,0x3)` → added new section: Intel WLAN with keys `AAPL,slot-name`, `device_type`, `model` etc.
+* DeviceProperties → `PciRoot(0x0)/Pci(0x14,0x3)` → added new section: Intel WLAN with keys `AAPL,slot-name`, `device_type`, `model`, `name` etc.
 * Kernel → Add → changed order of some kexts, placing `USBPorts.kext` before AirportItlwm and IntelBluetooth kexts
 
 ## OpenCore v0.6.9 Update

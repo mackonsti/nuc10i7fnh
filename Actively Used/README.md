@@ -118,16 +118,7 @@ This NUC is embedding the Intel UHD Graphics 630 (Mobile) display controller wit
 
 It is thus important to _force_ a `device-id` and an `ig-platform-id` value in OpenCore that reflect this Mac Mini IGPU hardware, thus matching this NUC hardware. This leads to the safe use of `device-id` value `0x3e9b0000` and `AAPL,ig-platform-id` as `0x3e9b0007` (byte-swapped) thanks to Hackintool. See **DeviceProperties** at [Dortania](https://dortania.github.io/OpenCore-Install-Guide/config-laptop.plist/coffee-lake-plus.html#deviceproperties).
 
-4. The CPU fan readings are now supported:
-```
-	<key>ec-device</key>
-	<string>Intel_EC_V9</string>
-	<key>model</key>
-	<string>Intel Corporation Comet Lake LPC Controller</string>
-```
-Support for the NUC's embedded chipset **ITE IT8987E-VG** has been added in [VirtualSMC](https://github.com/acidanthera/VirtualSMC/releases) (and more specifically `SMCSuperIO.kext`) since version 1.2.2 thanks to its developers. The required method is to inject the needed property `<key>ec-device</key>` and the correct identifier that corresponds to the NUC's model/generation own **LPC Controller** device (see [here](https://github.com/acidanthera/VirtualSMC/blob/master/Docs/EmbeddedControllers.md)). For this NUC, the value is `<string>Intel_EC_V9</string>` thus enabling CPU fan readings in any monitoring tool.
-
-5. The following custom SSDTs are included, defined and enabled:
+4. The following custom SSDTs are included, defined and enabled:
 
 * SSDT-APPLE.aml
 * SSDT-AWAC.aml
