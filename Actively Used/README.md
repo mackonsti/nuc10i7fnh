@@ -13,9 +13,9 @@ As for the _unique_ number needed in the **ROM** value of the `PlatformInfo` sec
 To confirm that the injected value works persistently across reboots, one can either run in Terminal [iMessageDebug](https://mac.softpedia.com/get/System-Utilities/iMessageDebug.shtml) or the command:<br/>
 `nvram -x 4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14:ROM` and verify the output.
 
-## Current OpenCore Version Installed
+## OpenCore Version Installed
 
-These files have been running without issues on the official OpenCore **v0.6.7** release on [Git Hub](https://github.com/acidanthera/OpenCorePkg/releases).
+These files have been running without issues on the official OpenCore **v0.6.7** release on [GitHub](https://github.com/acidanthera/OpenCorePkg/releases).
 
 The original configuration, especially setting the "Quirks" to the correct values for this _specific_ NUC chipset and platform, was done by following the [Dortania Guide to OpenCore](https://dortania.github.io/OpenCore-Install-Guide/config.plist/comet-lake.html) and has remained pretty much the same with the last OpenCore iterations.
 
@@ -84,30 +84,9 @@ This option allows `CMD+OPT+P+R` keyboard shortcut during boot, while _also_ act
 
 Allows using `CTRL+Enter` and `CTRL+Index` keyboard shortcuts that can change the default boot option (drive) in the OpenCore picker.
 
-## OpenCore Changes History
+## OpenCore Updates History
 
-The following changes (either additions or removals) are present in each configuration file per the respective OpenCore release:
-
-### OpenCore v0.7.0 Update
-
-Some more new keys were added again:
-
-* Kernel → Quirks → added new key: `ProvideCurrentCpuInfo` as "false" boolean
-* Misc → Security → added new key: `AllowToggleSip` as "false" boolean
-* Misc → Tools → added the required key `Flavour` in all tool entries as "Auto" string
-* NVRAM → Add → `7C436110-AB2A-4BBB-A880-FE41995C9F82` key: included `ForceDisplayRotationInEFI` parameter
-* NVRAM → Delete → `7C436110-AB2A-4BBB-A880-FE41995C9F82` key: included `ForceDisplayRotationInEFI` parameter
-* PlatformInfo → Generic: renamed key from `AdviseWindows` to `AdviseFeatures` per requirement
-* UEFI → Output → changed key: `GopPassThrough` type from boolean to string as "Disabled"
-* UEFI → ProtocolOverrides → added new key: `AppleEg2Info` as "false" boolean
-
-**Personal changes:**
-
-* ACPI → Delete → included two samples of drop tables such as `CpuPm` and `Cpu0Ist` for possible later use
-* DeviceProperties → `PciRoot(0x0)/Pci(0x14,0x3)` → added new section: Intel WLAN with keys `AAPL,slot-name`, `device_type`, `model` etc.
-* Kernel → Add → changed order of some kexts, placing `USBPorts.kext` before AirportItlwm and IntelBluetooth kexts
-
-**For all previous configuration history see → [Updates](Updates.md)**
+For all configuration changes (either additions or removals) per the respective OpenCore release, consult the configuration [updates](Updates.md) history.
 
 ## OpenCore Main Parameters
 
@@ -117,10 +96,10 @@ Rename `_STA` to `XSTA` for device `(H_EC)` allowing to disable this native devi
 
 2. The following **important** CPU ID faking must be used:
 ```
-<key>Cpuid1Data</key>
-<data>7AYIAAAAAAAAAAAAAAAAAA==</data>
-<key>Cpuid1Mask</key>
-<data>/////wAAAAAAAAAAAAAAAA==</data>
+	<key>Cpuid1Data</key>
+	<data>7AYIAAAAAAAAAAAAAAAAAA==</data>
+	<key>Cpuid1Mask</key>
+	<data>/////wAAAAAAAAAAAAAAAA==</data>
 ```
 Without this "Emulate" parameter in "Kernel" section, the NUC will _not_ boot into Catalina or Big Sur, due to the fact that this NUC Core i7 CPU seems unsupported.
 
@@ -130,16 +109,25 @@ There have also been earlier OpenCore configurations for this NUC that have been
 
 3. The following IGPU embedded graphics IDs are injected:
 ```
-<key>AAPL,ig-platform-id</key>
-<data>BwCbPg==</data>
-<key>device-id</key>
-<data>mz4AAA==</data>
+	<key>AAPL,ig-platform-id</key>
+	<data>BwCbPg==</data>
+	<key>device-id</key>
+	<data>mz4AAA==</data>
 ```
 This NUC is embedding the Intel UHD Graphics 630 (Mobile) display controller with PCI ID of [[8086:3e9b]](http://pci-ids.ucw.cz/read/PC/8086/3e9b) that seems to be the one used by `Macmini8,1` natively. However, if no IDs are injected or the wrong ones, **WhateverGreen** may be assigning a different set of IDs (probably due to the CPU platform) which has insofrar led many times to lack of acceleration or computer freezes.
 
 It is thus important to _force_ a `device-id` and an `ig-platform-id` value in OpenCore that reflect this Mac Mini IGPU hardware, thus matching this NUC hardware. This leads to the safe use of `device-id` value `0x3e9b0000` and `AAPL,ig-platform-id` as `0x3e9b0007` (byte-swapped) thanks to Hackintool. See **DeviceProperties** at [Dortania](https://dortania.github.io/OpenCore-Install-Guide/config-laptop.plist/coffee-lake-plus.html#deviceproperties).
 
-4. The following custom SSDTs are included, defined and enabled:
+4. The CPU fan readings are now supported:
+```
+	<key>ec-device</key>
+	<string>Intel_EC_V9</string>
+	<key>model</key>
+	<string>Intel Corporation Comet Lake LPC Controller</string>
+```
+Support for the NUC's embedded chipset **ITE IT8987E-VG** has been added in [VirtualSMC](https://github.com/acidanthera/VirtualSMC/releases) (and more specifically `SMCSuperIO.kext`) since version 1.2.2 thanks to its developers. The required method is to inject the needed property `<key>ec-device</key>` and the correct identifier that corresponds to the NUC's model/generation own **LPC Controller** device (see [here](https://github.com/acidanthera/VirtualSMC/blob/master/Docs/EmbeddedControllers.md)). For this NUC, the value is `<string>Intel_EC_V9</string>` thus enabling CPU fan readings in any monitoring tool.
+
+5. The following custom SSDTs are included, defined and enabled:
 
 * SSDT-APPLE.aml
 * SSDT-AWAC.aml
@@ -154,7 +142,7 @@ It is thus important to _force_ a `device-id` and an `ig-platform-id` value in O
 
 The ACPI code and justification for each custom DSDT is described in the active [SSDTs](../SSDTs) section.
 
-5. The following kexts are included, defined and required:
+6. The following kexts are included, defined and required:
 
 * [AirportItlwm.kext](https://github.com/OpenIntelWireless/itlwm/releases)
 * [AppleALC.kext](https://github.com/acidanthera/AppleALC/releases)
@@ -169,6 +157,24 @@ The ACPI code and justification for each custom DSDT is described in the active 
 * [WhateverGreen.kext](https://github.com/acidanthera/WhateverGreen/releases)
 * USBPorts.kext
 
-**Note:** This Intel NUC's firmware does _not_ seem to have any SMC keys related to CPU or motherboard **fan** being passed-through to the OS, hence rendering the loading of **SMCSuperIO.kext** unnecessary.
-
 **Note:** It has not been validated if the use of **NVMeFix.kext** improves overall sleep or power consumption, therefore this kext is at this moment just disabled and won't get loaded.
+
+## Sleep/Wake Parameters
+
+The following parameters can be set via Terminal, according to the Dortania guide to [Fixing Sleep](https://dortania.github.io/OpenCore-Post-Install/universal/sleep.html#preparations):
+
+```
+sudo pmset autopoweroff 0; \
+sudo pmset powernap 0; \
+sudo pmset standby 0; \
+sudo pmset proximitywake 0; \
+sudo pmset tcpkeepalive 0
+```
+
+These `pmset` parameters above achieve the following:
+
+* Disable `Auto Power-Off` → prevents this form of hibernation;
+* Disable `Power Nap` → prevents periodically waking the computer for network and updates(but not the display);
+* Disable `Standby` → minimises the time period between sleep and going into hibernation;
+* Disable `Proximity Wake` → does not allow waking from an iPhone or an Apple Watch when they come near;
+* Disable `TCP Keep Alive` → prevents the mechanism that wakes the computer up every 2 hours.

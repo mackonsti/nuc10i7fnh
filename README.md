@@ -98,7 +98,7 @@ For the most basic but _required_ BIOS settings, as well as previous firmware re
 * External USB 3.1 ports work as expected; using generated `USBPorts.kext`;
 * Internal USB 2.0 headers not used; they are disabled in BIOS;
 * External USB-C ports **TBC**;
-* Intel graphics acceleration works as `0x3E9B0007` with [WhateverGreen](https://github.com/acidanthera/whatevergreen/releases);
+* Intel graphics acceleration works as platform ID `0x3E9B0007` with [WhateverGreen](https://github.com/acidanthera/whatevergreen/releases);
 * Analogue audio output works as layout ID `0x17` with [AppleALC](https://github.com/acidanthera/AppleALC/releases/);
 * Digital audio output does **not** work yet;
 * Embedded Intel LAN interface works with [IntelMausi](https://github.com/acidanthera/IntelMausi/releases);
@@ -118,8 +118,8 @@ The `AAPL,ig-platform-id` property set to `0x3E9B0007` is used for **WhateverGre
 
 | Properties             | Value(s)                             |
 | ---------------------- | ------------------------------------ |
-| Platform ID            | 0x3E9B0007                           |
-| Device ID              | 0x3E9B8086                           |
+| Platform ID            | 0x3E9B0007 → `07009B3E`              |
+| Device ID              | 0x3E9B0000 → `9B3E0000`              |
 | Mobile                 | No                                   |
 | Stolen Memory          | 57 MB                                |
 | Framebuffer Memory     | 0 MB                                 |
@@ -135,7 +135,7 @@ The `AAPL,ig-platform-id` property set to `0x3E9B0007` is used for **WhateverGre
 | Pipe / Port #2         | Bus ID `0x04` Pipe `10` Connector DP |
 | Pipe / Port #3         | Bus ID `0x06` Pipe `8`  Connector DP |
 
-Read more at [Intel� HD Graphics FAQs](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.IntelHD.en.md) on the **WhateverGreen** repository.
+Read more at [Intel® HD Graphics FAQs](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.IntelHD.en.md) on the **WhateverGreen** repository.
 
 ## Changes Brought About by macOS 11
 
