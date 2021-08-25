@@ -129,7 +129,7 @@ The `AAPL,ig-platform-id` property set to `0x3E9B0007` is used for **WhateverGre
 | Total Cursor Memory    | 1 MB                                 |
 | Maximum Stolen Memory  | 172 MB                               |
 | Maximum Overall Memory | 173 MB                               |
-| Model name             | Intel UHD Graphics 630               |
+| Model Name             | Intel UHD Graphics 630               |
 | Camellia               | CamelliaDisabled (0)                 |
 | Connector Count        | 3                                    |
 | Pipe / Port #1         | Bus ID `0x05` Pipe `9`  Connector DP |
