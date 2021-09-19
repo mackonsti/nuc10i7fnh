@@ -2,6 +2,14 @@
 
 The following changes (either additions or removals) are present in each configuration file per the respective OpenCore release:
 
+## OpenCore v0.7.3 Update
+
+Moving directly to this new version has required the following small changes:
+
+* UEFI → AppleInput → added new key: `GraphicsInputMirroring` as "true" boolean
+* UEFI → Drivers → changed structure: each driver has its own `Path`, `Arguments` and `Enabled` switch
+* UEFI → Quirks → added new key: `ForceOcWriteFlash` as "false" boolean
+
 ## OpenCore v0.7.1 Update
 
 The transition to this new version brought minimal changes:
