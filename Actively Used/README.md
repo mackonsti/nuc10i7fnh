@@ -2,7 +2,7 @@
 
 ## Current NUC BIOS Revision
 
-FNCML357.0052.2021.0409.1144
+FNCML357.0053.2021.0707.1420
 
 ## Generating Personalised SMBIOS
 
