@@ -25,17 +25,15 @@ Once the needed tools are downloaded, install `UEFITool.app` to your local Appli
 
 ## Examine NUC firmware via UEFITool
 
-Launch UEFITool and open your BIOS image file, for example `FN0062.cap`. You will be presented with a screen like this:
+Launch **UEFITool** and open your BIOS image file, for example `FN0062.cap`. You will be presented with a screen like this:
 
 ![UEFIToolLanding](UEFIToolLanding.png)
 
 Next, press Cmd+F and search for the Unicode text `CFG Lock` in the respective dialog box. If no results appear, it could mean that the firmware no longer supports the `CFG Lock` feature.
 
-In the "Search" results section at the bottom, there should be at least one entry (line) so double-click on the first available result:
-
 ![UEFIToolSearch](UEFIToolSearch.png)
 
-You will be taken to the respective firmware section that contains our searched text:
+In the "Search" results section at the bottom, there should be at least one entry (line) so double-click on the first available result. You will be taken to the respective firmware section that contains our searched text:
 
 ![UEFIToolResult](UEFIToolResult.png)
 
@@ -43,7 +41,7 @@ Click on the parent container, in our case it wil be `Setup`. Now right-click ov
 
 ## Converting the extracted structure
 
-Open a **Terminal.app** session and go to the directory where you saved `Setup.bin` for example, and convert this structure file to plain text:
+Open a **Terminal.app** session and go to the directory where you saved `Setup.bin` for example, and convert this structure file to human-readable plain text:
 
 ```
 % /usr/local/bin/ifrextract Setup.bin Setup.txt
@@ -76,11 +74,9 @@ Now, study carefully the line:
 
 This tells us that the `CFG Lock` variable is found/stored in `VarStore: 0x11` at the `VarOffset: 0x3E` and has size of `0x01` byte. Now, we move all the way up of the `Setup.txt` file, where there normally is a reference list of all available VarStore folders in the firmware. We search for `0x11` and we should find:
 
-```
-0x2A235	VarStore: VarStoreId: 0x11 [B08F97FF-E6E8-4193-A997-5E9E9B0ADB32], Size: 0x23D, Name: CpuSetup {24 1F FF 97 8F B0 E8 E6 93 41 A9 97 5E 9E 9B 0A DB 32 11 00 3D 02 43 70 75 53 65 74 75 70 00}
-```
+`0x2A235  VarStore: VarStoreId: 0x11 [B08F97FF-E6E8-4193-A997-5E9E9B0ADB32], Size: 0x23D, Name: CpuSetup {24 1F [...]`
 
-Here we read that the name of `VarStore: 0x11` is `CpuSetup`.
+Here we read that the name of `VarStore: 0x11` is called `CpuSetup`.
 
 Therefore, our CFG Lock variable is found in `VarStore: 0x11` named `CpuSetup` at `VarOffset: 0x3E` with size of `0x01` byte.
 
@@ -88,9 +84,9 @@ Therefore, our CFG Lock variable is found in `VarStore: 0x11` named `CpuSetup` a
 
 ## Booting in UEFI to change the value
 
-We will now need to mount our EFI partition and copy the UEFI tool `setup_var.efi` in our **Tools** folder of our bootloader e.g. `/EFI/OC/Tools/` and after ejecting the EFI partition, we reboot the computer. On the OpenCore Picker screen, we choose the *UEFI Shell* icon (i.e. **OpenShell.efi** must be registerd and enabled in your `config.plist`).
+We will now need to mount our EFI partition and copy the UEFI tool `setup_var.efi` in our **Tools** folder of our bootloader e.g. in `/EFI/OC/Tools/` and after ejecting the EFI partition, we reboot the computer. On the OpenCore Picker screen, we choose the *UEFI Shell* icon (meaning **OpenShell.efi** must be registered and enabled in your `config.plist`).
 
-In the shell screen, we should find our boot EFI partition by entering the drive such as `FS0:`, `FS1:` or even `FS2:` depending on the system setup and boot disk partition(s) of the NUC. A good practice is to type the drive name and then `dir` contents, to be sure we are in the correct EFI partition.
+In the shell screen, we should find our boot EFI partition by entering the drive such as `FS0:`, `FS1:` or even `FS2:` depending on the system setup and boot disk partition(s) of the NUC. A good practice is to type the drive name and then `dir` the contents, to be sure we are in the correct EFI partition.
 
 Once we change to the Tools directory via `cd`, we can find our `setup_var.efi` tool and we can now attempt to disable the **CFG Lock** feature by setting a value of `0x00` i.e. zero. If we check the help text of the `setup_var.efi` tool via `-h` or `--help` we will see the syntax needed:
 

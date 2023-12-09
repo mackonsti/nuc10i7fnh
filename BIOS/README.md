@@ -2,7 +2,7 @@
 
 There are some basic requirements regarding the BIOS settings of this NUC in order to be able to boot correctly to macOS via the UEFI bootloader. Press F2 to enter BIOS Setup; press F9 to **load optimized defaults** then proceed to the following changes below, per section.
 
-## Necessary :warning: and Advised Changes :white_check_mark:
+## :warning: Necessary and :white_check_mark: Advised Changes
 
 **1. ADVANCED Section**
 * In "Onboard Devices" panel → Set "Enhanced Consumer IR" to **Disabled**  :white_check_mark:
