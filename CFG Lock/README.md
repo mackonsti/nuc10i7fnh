@@ -2,7 +2,7 @@
 
 ## Introduction
 
-According to [Dortania Guide](https://dortania.github.io/OpenCore-Post-Install/misc/msr-lock.html#what-is-cfg-lock), **CFG Lock** or otherwise known as the "MSR 0xE2" register, is a setting in BIOS that allows for this specific MSR (Model Specific Register) register to be written to. By default, most motherboards **lock** this variable (i.e. read, not write) with many even _hiding_ the option from the BIOS user interface. The reason we care about it, is that macOS actually wants to **write** to this register, and not just one part of macOS: both the Kernel (XNU) and `AppleIntelPowerManagement` want to access it, as it used for the CPU's power management, essential for macOS. Without the ability to write to MSR 0xE2, all or most of the CPU power management is lost and the system may not even boot (unless the correct Quirk is enabled).
+According to the [Dortania Guide](https://dortania.github.io/OpenCore-Post-Install/misc/msr-lock.html#what-is-cfg-lock), **CFG Lock** or otherwise known as the "MSR 0xE2" register, is a setting in BIOS that allows for this specific MSR (Model Specific Register) register to be written to. By default, most motherboards **lock** this variable (i.e. read, not write) with many even _hiding_ the option from the BIOS user interface. The reason we care about it, is that macOS actually wants to **write** to this register, and not just one part of macOS: both the Kernel (XNU) and `AppleIntelPowerManagement` want to access it, as it used for the CPU's power management, essential for macOS. Without the ability to write to MSR 0xE2, all or most of the CPU power management is lost and the system may not even boot (unless the correct Quirk is enabled).
 
 Some time ago, this NUC had the "MSR 0xE2" register easily unlocked via a simple, nice UEFI tool by InsanelyMac user **Brumbaer** called [CFGLock.efi](https://www.insanelymac.com/forum/topic/344035-cfglock-unlock-msr-0xe2/) that was run on the UEFI Shell. However, the tool was not further developped and OpenCore developers later introduced their own tool called `ControlMsrE2.efi` that is now part of the OpenCore releases.
 
@@ -14,10 +14,10 @@ Recent versions of the NUC BIOS by Intel somehow _broke_ the ability to change t
 
 * Download [UEFITool](https://github.com/LongSoft/UEFITool/releases/) for Mac, e.g. `UEFITool_NE_A68_universal_mac.zip`
 * Download [Universal IFR Extractor](https://github.com/LongSoft/Universal-IFR-Extractor/releases/) for Mac, e.g. `ifrextract_v0.3.7.mac.zip`
-* Download [Setup_Var](https://github.com/datasone/setup_var.efi/releases/) UEFI tool, e.g. latest `setup_var.efi`
+* Download [setup_var](https://github.com/datasone/setup_var.efi/releases/) UEFI tool, e.g. latest `setup_var.efi`
 * Download latest Intel NUC BIOS zip (see in [BIOS](../BIOS/) folder)
 
-**N.B.** The latest build of `ifextract` is v0.3.7 released on December 15, 2020 which works on Intel x64 systems but it has been discontinued by the developer. This tool is command-line only (CLI).
+**N.B.** The latest build of `ifextract` is v0.3.7 released on December 15, 2020 which works on Apple Intel (x64) systems but it has been discontinued by the developer. This tool is command-line only (CLI).
 
 ## First steps
 
@@ -37,7 +37,7 @@ In the "Search" results section at the bottom, there should be at least one entr
 
 ![UEFIToolResult](UEFIToolResult.png)
 
-Click on the parent container, in our case it wil be `Setup`. Now right-click over it to select the menu option "Extract as is..." and select a destination folder of your choice, where we will be working next. The automatically generated file name would be `File_DXE_driver_Setup_Setup.ffs` but you can simply save it as `Setup.bin` for example.
+Click on the parent container, in our case it wil be `Setup`. Now right-click over it to select the menu option "Extract as is..." and select a destination folder of your choice, where we will be working next. The automatically generated file name would be `File_DXE_driver_Setup.ffs` but you can simply save it as `Setup.bin` for example.
 
 ## Converting the extracted structure
 
@@ -111,7 +111,9 @@ Our resulting command to enter in the UEFI Shell and with the information extrac
 
 `.\setup_var.efi 0x3E 0x00 -s 0x01 -n CpuSetup -r`
 
-Unfortunately, on the Intel NUC with firmware 0062 this **cannot** be achieved. An error appeared **"WRITE_PROTECTED"** as an output, which confirmed my suspictions: **Intel has locked this value and we can no longer update it by any means.** Reverting to a previous firmware version may not be easy or possible, as Intel mention this clearly in their Release Notes.
+## Outcome
+
+It looks like on the Intel NUC with firmware 0062 this **cannot** be achieved. When entered the command, an error appeared **"WRITE_PROTECTED"** as an output, which confirmed my suspictions: **Intel has locked this value and we can no longer update it by any means.** Reverting to a previous firmware version may not be easy or possible, as Intel mention this clearly in their Release Notes.
 
 ## Conclusion
 
