@@ -188,6 +188,10 @@ With the injection of `SSDT-PLUG.aml` via OpenCore, we can verify that Power Man
 
 ![PowerGadget](Various/PowerGadget.png)
 
+## Changes Brought About by macOS 13
+
+MacOS 13.x _Ventura_ [drops support for pre-Haswell CPUs](https://dortania.github.io/OpenCore-Install-Guide/extras/ventura.html#table-of-contents). Moreover, much of userspace now requires AVX2 support; because of this, macOS "Delta" updates (i.e. small 1-3 GB updates that normally appear in System Settings) will **no longer be available** and the full update (±12GB) must be installed each time, as Delta updates only contain the non-AVX2 cache to support Rosetta on Apple Silicon machines. OpenCore patching mechanism relies on these AVX2 instructions.
+
 ## Changes Brought About by macOS 12
 
 MacOS 12.x _Monterey_ has brought an important change in OpenCore configuration for BTLE, namely the required removal of **IntelBluetoothInjector.kext** and its replacement by **BlueToolFixup.kext** found inside [BrcmPatchRAM](https://github.com/acidanthera/BrcmPatchRAM) package. The main **IntelBluetoothFirmware.kext** remains active and must still be loaded, as done previously.

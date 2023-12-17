@@ -37,7 +37,7 @@ In the "Search" results section at the bottom, there should be at least one entr
 
 ![UEFIToolResult](UEFIToolResult.png)
 
-Click on the parent container, in our case it wil be `Setup`. Now right-click over it to select the menu option "Extract as is..." and select a destination folder of your choice, where we will be working next. The automatically generated file name would be `File_DXE_driver_Setup.ffs` but you can simply save it as `Setup.bin` for example.
+Click on the parent container, in our case it wil be `Setup`. Now, right-click over it to select the menu option "Extract as is..." and select a destination folder of your choice, where we will be working next. The automatically generated file name would be `File_DXE_driver_Setup.ffs` but you can simply save it as `Setup.bin` for example.
 
 ## Converting the extracted structure
 
@@ -51,7 +51,7 @@ Output: Setup.txt
 Protocol: UEFI
 ```
 
-Now with some text editor or viewer (e.g. BBEdit) open the resulting `Setup.txt` and search for the term `CFG Lock` again. The result should be something like this:
+Now, with some text editor or viewer (e.g. BBEdit) open the resulting `Setup.txt` and search for the term `CFG Lock` again. The result should be something like this:
 
 ```
 0x32C5A	Form: View/Configure CPU Lock Options, FormId: 0x274A {01 86 4A 27 D8 01}
@@ -121,4 +121,4 @@ Unfortunately, proper CPU power management can no longer be achieved with a lock
 
 ## Alternatives
 
-There is an alternative tool called [RU](https://github.com/JamesAmiTw/ru-uefi/) alongside a nice guide created by user [Dreamwhite](https://github.com/dreamwhite/bios-extraction-guide/blob/master/ru.efi.md) which offers a visual interface when navigating in the local saved BIOS parameters, with the ability to change them on-the-fly, but I will _not_ attempt anything further as it will likely **not** work either, because the NVRAM parameters for the **CFG Lock** seem read-only regardless of the tool used. Thank you, Intel...
+There is an alternative tool called [RU](https://github.com/JamesAmiTw/ru-uefi/) alongside a nice guide created by user [Dreamwhite](https://github.com/dreamwhite/bios-extraction-guide/blob/master/ru.efi.md) which offers a visual interface when navigating in the local saved BIOS sections and parameters, with the ability to change them on-the-fly, but I will _not_ attempt anything further as it will likely **not** work either, because the NVRAM parameters for the **CFG Lock** seem read-only regardless of the tool used. Thank you, Intel...
