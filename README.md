@@ -2,6 +2,27 @@
 
 This repository contains personal work and files, developed and maintained for a successful use with [OpenCore EFI bootloader](https://github.com/acidanthera/OpenCorePkg) on this specific Intel NUC model. There are **no** ready, pre-packaged EFI solutions provided; instead, the needed configuration and ACPI files are published for those interested in studying the code, while creating their own bootloader configurations.
 
+**Table Of Contents**
+- [Platform Generation](#platform-generation)
+- [Product Generation](#product-generation--frost-canyon--2019-)
+- [Processor Generation](#processor-generation--comet-lake--2019-)
+- [Geekbench](#geekbench)
+- [Product Overview](#product-overview)
+- [Compatible Models](#compatible-models)
+- [Current Setup](#current-setup)
+- [Required BIOS Settings](#required-bios-settings)
+- [OpenCore Keyboard Shortcuts](#opencore-picker-keyboard-shortcuts)
+- [Active Configuration](#active-configuration)
+- [Unsupported CFG Lock](#unsupported-cfg-lock-in-bios--warning-)
+- [Intel UHD Graphics Properties](#intel-uhd-graphics-630-properties)
+- [USB Port Mapping](#usb-port-mapping-on-nuc-chassis)
+- [CPU Fan Reading](#cpu-fan-reading-support)
+- [Wireless Connectivity](#wireless-connectivity)
+- [CPU Power Management](#cpu-power-management)
+- [Changes By macOS 13](#changes-brought-about-by-macos-13)
+- [Changes By macOS 12](#changes-brought-about-by-macos-12)
+- [Changes By macOS 11](#changes-brought-about-by-macos-11)
+
 ## Platform Generation
 
 * Sandy Bridge = All Core ix-3xxx (HD Graphics 3000)
