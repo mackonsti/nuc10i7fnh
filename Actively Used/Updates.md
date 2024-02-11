@@ -2,6 +2,14 @@
 
 The following changes (either additions or removals) are present in each configuration file per their respective OpenCore release:
 
+## OpenCore v0.9.8 Update
+
+* No changes required to configuration files, no keys were added or removed.
+
+## OpenCore v0.9.7 Update
+
+* Booter → Quirks → added new required key: `FixupAppleEfiImages` as "false" boolean
+
 ## OpenCore v0.9.5 Update
 
 * UEFI → Quirks → added new required key: `ShimRetainProtocol` as "false" boolean

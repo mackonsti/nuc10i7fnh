@@ -1,5 +1,17 @@
 # Actively Used Files
 
+**Table Of Contents**
+- [Current NUC BIOS Revision](#current-nuc-bios-revision)
+- [Generating Personalised SMBIOS](#generating-personalised-smbios)
+- [OpenCore Version Installed](#opencore-version-installed)
+- [OpenCore Updates History](#opencore-updates-history)
+- [OpenCore Configuration Files](#opencore-configuration-files)
+- [Notable Configuration Differences](#notable-differences-in-configurations)
+- [OpenCore Main Parameters](#opencore-main-parameters)
+- [Sleep/Wake Parameters](#sleep-wake-parameters)
+- [Volume Hash Mismatch Error](#volume-hash-mismatch-error)
+- [Error Installing Delta Update](#error-installing-differential--delta--update)
+
 ## Current NUC BIOS Revision
 
 FNCML357.0062.2023.0719.2024
@@ -228,3 +240,13 @@ The following check-list is based on the various messages posted on [Reddit](htt
 * OpenCore setting `UEFI` → `ProtocolOverrides` → `HashServices` set to TRUE as expected (CPU is newer to Haswell) :white_check_mark:
 
 Insofar, no definitive solution has been proposed or validated.
+
+## Error Installing Differential (Delta) Update
+
+With recent OS versions, there seems to be an issue when selecting the _differential_ macOS update i.e. "Delta" that is usually smaller in size, compared to the full installer that counts many Gigabytes. Updating macOS via System Settings (i.e. System Preferences) may produce an **error** after downloading the package and during "preparation".
+
+According to user **Winthryth** in this [Reddit post](https://www.reddit.com/r/hackintosh/comments/10km392/ventura_incremental_update_smaller_update_always/) the fault lies in the fact that some active kexts seemingly use Lilu to dynamically patch macOS binaries during boot (expected) but that breaks the Delta update during validation.
+
+The kexts were found to be `BlueToolFixup.kext` and `RestrictEvents.kext` so disabling these in the OpenCore configuration temporarily, allows the Delta macOS update to succeed. They can be re-enabled later without issues.
+
+If this solution still fails, then downloading and installing the full macOS Installer for that new build will always work, but will take a little longer (and more space). Do not forget to backup.
