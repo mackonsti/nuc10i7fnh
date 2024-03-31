@@ -1,0 +1,27 @@
+00:00.0 Host bridge [0600]: Intel Corporation Processor Host Bridge/DRAM Registers [8086:9b51]
+00:02.0 VGA compatible controller [0300]: Intel Corporation Comet Lake UHD Graphics [8086:9bca] (rev 04)
+00:08.0 System peripheral [0880]: Intel Corporation 6th/7th/8th Generation Core Processor Gaussian Mixture Model [8086:1911]
+00:12.0 Signal processing controller [1180]: Intel Corporation Comet Lake Thermal Subsytem [8086:02f9]
+00:14.0 USB controller [0c03]: Intel Corporation Comet Lake USB 3.1 xHCI Host Controller [8086:02ed]
+00:14.2 RAM memory [0500]: Intel Corporation Comet Lake Shared SRAM [8086:02ef]
+00:14.3 Network controller [0280]: Intel Corporation Comet Lake CNVi Wireless [8086:02f0]
+00:15.0 Serial bus controller [0c80]: Intel Corporation Serial I/O I2C Host Controller [8086:02e8]
+00:15.2 Serial bus controller [0c80]: Intel Corporation Comet Lake LPSS I2C Controller [8086:02ea]
+00:16.0 Communication controller [0780]: Intel Corporation Comet Lake MEI Controller [8086:02e0]
+00:17.0 SATA controller [0106]: Intel Corporation Comet Lake SATA AHCI Controller [8086:02d3]
+00:1c.0 PCI bridge [0604]: Intel Corporation Comet Lake PCI Express Root Port #5 [8086:02bc] (rev f0)
+00:1d.0 PCI bridge [0604]: Intel Corporation Comet Lake PCI Express Root Port #9 [8086:02b0] (rev f0)
+00:1d.5 PCI bridge [0604]: Intel Corporation Comet Lake PCI Express Root Port #14 [8086:02b5] (rev f0)
+00:1f.0 ISA bridge [0601]: Intel Corporation Comet Lake LPC Controller/eSPI Controller [8086:0284]
+00:1f.3 Audio device [0403]: Intel Corporation Comet Lake High Definition Audio Controller [8086:02c8]
+00:1f.4 SMBus [0c05]: Intel Corporation Comet Lake SMBus Host Controller [8086:02a3]
+00:1f.5 Serial bus controller [0c80]: Intel Corporation Comet Lake SPI Controller [8086:02a4]
+00:1f.6 Ethernet controller [0200]: Intel Corporation Ethernet Connection (10) I219-V [8086:0d4f]
+01:00.0 PCI bridge [0604]: Intel Corporation JHL7540 Thunderbolt 3 Bridge [Titan Ridge 2C 2018] [8086:15e7] (rev 06)
+02:00.0 PCI bridge [0604]: Intel Corporation JHL7540 Thunderbolt 3 Bridge [Titan Ridge 2C 2018] [8086:15e7] (rev 06)
+02:01.0 PCI bridge [0604]: Intel Corporation JHL7540 Thunderbolt 3 Bridge [Titan Ridge 2C 2018] [8086:15e7] (rev 06)
+02:02.0 PCI bridge [0604]: Intel Corporation JHL7540 Thunderbolt 3 Bridge [Titan Ridge 2C 2018] [8086:15e7] (rev 06)
+03:00.0 System peripheral [0880]: Intel Corporation JHL7540 Thunderbolt 3 NHI [Titan Ridge 2C 2018] [8086:15e8] (rev 06)
+39:00.0 USB controller [0c03]: Intel Corporation JHL7540 Thunderbolt 3 USB Controller [Titan Ridge 2C 2018] [8086:15e9] (rev 06)
+3a:00.0 Non-Volatile memory controller [0108]: Samsung Electronics Co Ltd NVMe SSD Controller SM981/PM981/PM983 [144d:a808]
+3b:00.0 SD host controller [0805]: Genesys Logic, Inc. GL9755 SD Host Controller [17a0:9755]
