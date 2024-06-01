@@ -38,11 +38,11 @@ This repository contains personal work and files, developed and maintained for a
 
 ## Product Generation: Frost Canyon (2019)
 
-**Specifications:** see [Intel website](https://www.intel.com/content/www/us/en/ark/products/188811/intel-nuc-10-performance-kit-nuc10i7fnh.html)
+**Specifications:** N/A (original [Intel website](https://www.intel.com/content/www/us/en/ark/products/188811/intel-nuc-10-performance-kit-nuc10i7fnh.html) no longer exists)
 
-**Downloads:** see [Intel website](https://www.intel.com/content/www/us/en/products/sku/188811/intel-nuc-10-performance-kit-nuc10i7fnh/downloads.html)
+**Downloads:** see [ASUS website](https://www.asus.com/supportonly/NUC10I7FNH/HelpDesk_Download/) as original [Intel website](https://www.intel.com/content/www/us/en/products/sku/188811/intel-nuc-10-performance-kit-nuc10i7fnh/downloads.html) no longer exists
 
-**BIOS Update & Recovery Instructions:** see [Intel website](https://www.intel.com/content/www/us/en/support/articles/000033291/mini-pcs.html)
+**BIOS Update & Recovery Instructions:** N/A (original [Intel website](https://www.intel.com/content/www/us/en/support/articles/000033291/mini-pcs.html) no longer exists)
 
 **BIOS Troubleshooting:** see [Intel website](https://www.intel.com/content/www/us/en/support/articles/000005964/mini-pcs.html)
 
@@ -59,6 +59,8 @@ This repository contains personal work and files, developed and maintained for a
 **V4 Scores:** https://browser.geekbench.com/v4/cpu/search?q=Core+i7-10710U
 
 **V5 Scores:** https://browser.geekbench.com/v5/cpu/search?q=Core+i7-10710U
+
+**V6 Scores:** https://browser.geekbench.com/v6/cpu/search?q=Core+i7-10710U
 
 ## Product Overview
 
