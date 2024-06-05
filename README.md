@@ -4,8 +4,8 @@ This repository contains personal work and files, developed and maintained for a
 
 **Table Of Contents**
 - [Platform Generation](#platform-generation)
-- [Product Generation](#product-generation--frost-canyon-2019)
-- [Processor Generation](#processor-generation--comet-lake-2019)
+- [Product Generation](#product-generation-frost-canyon-2019)
+- [Processor Generation](#processor-generation-comet-lake-2019)
 - [Geekbench](#geekbench)
 - [Product Overview](#product-overview)
 - [Compatible Models](#compatible-models)
