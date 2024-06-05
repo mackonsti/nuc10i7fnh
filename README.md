@@ -4,8 +4,8 @@ This repository contains personal work and files, developed and maintained for a
 
 **Table Of Contents**
 - [Platform Generation](#platform-generation)
-- [Product Generation](#product-generation--frost-canyon--2019-)
-- [Processor Generation](#processor-generation--comet-lake--2019-)
+- [Product Generation](#product-generation--frost-canyon-2019)
+- [Processor Generation](#processor-generation--comet-lake-2019)
 - [Geekbench](#geekbench)
 - [Product Overview](#product-overview)
 - [Compatible Models](#compatible-models)
@@ -13,7 +13,7 @@ This repository contains personal work and files, developed and maintained for a
 - [Required BIOS Settings](#required-bios-settings)
 - [OpenCore Keyboard Shortcuts](#opencore-picker-keyboard-shortcuts)
 - [Active Configuration](#active-configuration)
-- [Unsupported CFG Lock](#unsupported-cfg-lock-in-bios--warning-)
+- [Unsupported CFG Lock](#unsupported-cfg-lock-in-bios-warning)
 - [Intel UHD Graphics Properties](#intel-uhd-graphics-630-properties)
 - [USB Port Mapping](#usb-port-mapping-on-nuc-chassis)
 - [CPU Fan Reading](#cpu-fan-reading-support)
@@ -64,9 +64,9 @@ This repository contains personal work and files, developed and maintained for a
 
 ## Product Overview
 
-![FrontPanel.jpg](Various/FrontPanel.jpg)
+![FrontPanel](Various/FrontPanel.jpg)
 
-![RearPanel.jpg](Various/RearPanel.jpg)
+![RearPanel](Various/RearPanel.jpg)
 
 ## Compatible Models
 
@@ -101,7 +101,7 @@ BIOS Revision: MM81.88Z.F000.B00.2111162120<br/>
 
 ## Required BIOS Settings
 
-For the most basic but _required_ BIOS settings, as well as previous firmware releases, see [BIOS](BIOS/) folder.
+For the essential but _required_ BIOS settings, as well as previous firmware releases, see [BIOS](BIOS/) folder.
 
 ## OpenCore Picker Keyboard Shortcuts
 
@@ -191,7 +191,7 @@ The above active and working USB ports are listed in Hackintool when the two *in
 
 **N.B.** Following some testing with external devices, it is believed that HS07 serves as the USB 2.0 alias for the rear USB-C (Thunderbolt XHCI) socket.
 
-![USBPorts.png](Various/USBPorts.png)
+![USBPorts](Various/USBPorts.png)
 
 ## CPU Fan Reading Support
 
