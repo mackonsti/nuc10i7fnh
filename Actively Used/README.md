@@ -35,7 +35,7 @@ The original configuration, especially setting the "Quirks" to the correct value
 
 For all configuration changes (either additions or removals) per the respective OpenCore release, consult the configuration [updates](Updates.md) history.
 
-:white_check_mark: Currently running **MacOS 10.13 Ventura** since OpenCore **0.9.3**.
+:white_check_mark: Currently running **MacOS 10.14 Sonoma** since OpenCore **1.0.0**.
 
 ## OpenCore Configuration Files
 
@@ -43,7 +43,7 @@ For all configuration changes (either additions or removals) per the respective 
 
 * **config.picker.plist** → Shows boot options (i.e. picker) with basic tools; all hidden Auxiliary tools are displayed if 'Space' is pressed on keyboard; after a brief time-out, continues (non-verbose) booting to default drive; all kexts are enabled, debug logging is disabled. Keys `ShowPicker` set to true, `Timeout` set to 5 seconds and `TakeoffDelay` set 0 microseconds.
 
-* **config.emergency.plist** → Shows boot options (i.e. picker) with **all** Auxiliary tools displayed; after a brief time-out, continues **verbose** `-v` booting to default drive; Wi-Fi and BTLE kexts are disabled; debug logging is enabled, including boot arguments being present. Keys `HideAuxiliary` set to false, `ShowPicker` set to true, `Timeout` set to 5 seconds. Additionally, `SecureBootModel` is disabled, `PanicNoKextDump`, `AppleDebug`, `ApplePanic`, `AllowNvramReset`, `AllowSetDefault` and `AllowToggleSip` are now enabled. Special boot arguments `keepsyms=1`, `debug=0x100`, `npci=0x2000` and `msgbuf=1048576` are set. **This file is notably used for USB installers.**
+* **config.emergency.plist** → Shows boot options (i.e. picker) with **all** Auxiliary tools displayed; after a brief time-out, continues **verbose** `-v` booting to default drive; Wi-Fi and BTLE kexts are disabled; debug logging is enabled, including boot arguments being present. Keys `HideAuxiliary` set to false, `ShowPicker` set to true, `Timeout` set to 5 seconds. Additionally, `SecureBootModel` is disabled, `PanicNoKextDump`, `AppleDebug`, `ApplePanic`, `AllowNvramReset`, `AllowSetDefault` and `AllowToggleSip` are now enabled. Special boot arguments `keepsyms=1`, `debug=0x100`, `npci=0x2000` and `msgbuf=1048576` are set. **This file is notably used for macOS USB installers.**
 
 All configuration files have been **validated** with `ocvalidate` tool that has been included in the OpenCore releases since version 0.6.5.
 
@@ -190,6 +190,7 @@ The ACPI code and justification for each custom SSDT is described in more detail
 * [IntelMausi.kext](https://github.com/acidanthera/IntelMausi/releases)
 * [Lilu.kext](https://github.com/acidanthera/Lilu/releases)
 * [NVMeFix.kext](https://github.com/acidanthera/NVMeFix/releases) → disabled
+* [RestrictEvents.kext](https://github.com/acidanthera/RestrictEvents/releases)
 * [SMCProcessor.kext](https://github.com/acidanthera/VirtualSMC/releases)
 * [SMCSuperIO.kext](https://github.com/acidanthera/VirtualSMC/releases)
 * [VirtualSMC.kext](https://github.com/acidanthera/VirtualSMC/releases)
@@ -222,7 +223,7 @@ These `pmset` parameters above achieve the following:
 
 ## Volume Hash Mismatch Error
 
-This new error started to recently appear after the update to Montery OS and late OpenCore 0.8.x series.
+This new error started to recently appear after the update to **Montery OS** and late OpenCore 0.8.x series.
 
 ![VolumeHashMismatch](../Various/VolumeHashMismatch.png)
 
@@ -247,6 +248,9 @@ With recent OS versions, there seems to be an issue when selecting the _differen
 
 According to user **Winthryth** in this [Reddit post](https://www.reddit.com/r/hackintosh/comments/10km392/ventura_incremental_update_smaller_update_always/) the fault lies in the fact that some active kexts seemingly use Lilu to dynamically patch macOS binaries during boot (expected) but that breaks the Delta update during validation.
 
-The kexts were found to be `BlueToolFixup.kext` and `RestrictEvents.kext` so disabling these in the OpenCore configuration temporarily, allows the Delta macOS update to succeed. They can be re-enabled later without issues.
+For macOS **Monterey** and **Ventura** the kexts found to block these updates are `BlueToolFixup.kext` and `RestrictEvents.kext` so disabling these in the OpenCore configuration _temporarily_, allows the Delta macOS update to succeed. They can be re-enabled later without issues.
 
-If this solution still fails, then downloading and installing the full macOS Installer for that new build will always work, but will take a little longer (and more space). Do not forget to backup.
+For macOS **Sonoma** however, there is a need to keep `RestrictEvents.kext` enabled in the OpenCore configuration and also add the argument `revpatch=sbvmm` in the configuration's `boot-args` (NVRAM section) for this Mac model to correctly detect OS updates.
+
+If either solution fails, then downloading and installing the full macOS Installer for that new build will always work, but will take a little longer (and more space). Do not forget to backup.
+More on installers [here](https://www.macworld.com/article/671911/how-to-get-old-macos-download-big-sur-catalina-mojave-and-more.html).

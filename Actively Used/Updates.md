@@ -2,9 +2,34 @@
 
 The following changes (either additions or removals) are present in each configuration file per their respective OpenCore release:
 
-## OpenCore v0.9.9 Update
+## OpenCore v1.0.2 Update
+
+* UEFI → Unload → added new required (empty) array
+
+**Personal changes:**
+
+* Misc → Security → changed key `SecureBootModel` value to "Default" for finished installations
+* Booter → Quirks → set key `FixupAppleEfiImages` to "true" (boolean) only if `SecureBootModel` is "Disabled"
+
+## OpenCore v1.0.1 Update
 
 * No changes required to configuration files, no keys were added or removed.
+
+**Personal changes:**
+
+* Booter → Quirks → changed key `ProtectUefiServices` value to "false" (boolean) after OpenCore manual study
+* Kernel → Scheme → added and enabled `RestrictEvents.kext` to be able to also detect OS updates
+* NVRAM → Add & Delete → brought back `4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14` section for compatibility
+* NVRAM → Add & Delete → brought back `4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102` section for compatibility
+* UEFI → Drivers → added and enabled driver `FirmwareSettingsEntry.efi` as option in Picker menu
+
+## OpenCore v1.0.0 Update
+
+* No changes required to configuration files since 0.9.7, no keys were added or removed.
+
+## OpenCore v0.9.9 Update
+
+* No changes required to configuration files since 0.9.7, no keys were added or removed.
 
 ## OpenCore v0.9.8 Update
 

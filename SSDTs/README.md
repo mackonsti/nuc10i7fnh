@@ -43,4 +43,4 @@ Combined with the needed OpenCore configuration patch (replacing `_OSI` with `XO
 
 This NUC has three visible USB ports and they are all USB 3.1 (Generation 2) connectors, except the two *internal* headers that are USB 2.0 connectors (and disabled in BIOS). This is why **USBPorts.kext** contains and defines both **HSxx** and **SS0x** types of ports as being of `UsbConnector` type "3" because it reflects the actual *electrical* connector.
 
-The other two visible USB ports are of Type C and are defined as type "9" `UsbConnector` respectively.
+The other two visible USB ports are of Type "C" and are defined as type "9" `UsbConnector` respectively.

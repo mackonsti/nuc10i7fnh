@@ -54,7 +54,6 @@ DefinitionBlock ("SSDT-EC-USBX.aml", "SSDT", 2, "OC", "FakeEC", 0x00000000)
         Device (EC)
         {
             Name (_HID, "EC000000")  // _HID: Hardware ID
-
             Method (_STA, 0, NotSerialized)  // _STA: Status
             {
                 If (_OSI ("Darwin"))
