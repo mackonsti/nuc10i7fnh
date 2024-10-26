@@ -64,9 +64,9 @@ This repository contains personal work and files, developed and maintained for a
 
 ## Product Overview
 
-![FrontPanel](Various/FrontPanel.jpg)
+![FrontPanel](Various/FrontPanel.png)
 
-![RearPanel](Various/RearPanel.jpg)
+![RearPanel](Various/RearPanel.png)
 
 ## Compatible Models
 
@@ -211,9 +211,11 @@ With the injection of `SSDT-PLUG.aml` via OpenCore, we can verify that Power Man
 
 ![PowerGadget](Various/PowerGadget.png)
 
-## Changes Brought About by macOS 13
+## Changes Brought About by macOS 13 and later
 
-MacOS 13.x _Ventura_ [drops support for pre-Haswell CPUs](https://dortania.github.io/OpenCore-Install-Guide/extras/ventura.html#table-of-contents). Moreover, much of userspace now requires AVX2 support; because of this, macOS "Delta" updates (i.e. small 1-3 GB updates that normally appear in System Settings) will **no longer be available** and the full update (±12GB) must be installed each time, as Delta updates only contain the non-AVX2 cache to support Rosetta on Apple Silicon machines. OpenCore patching mechanism relies on these AVX2 instructions.
+MacOS 13.x _Ventura_ and later [drops support for pre-Haswell CPUs](https://dortania.github.io/OpenCore-Install-Guide/extras/ventura.html#table-of-contents). Moreover, much of userspace now requires AVX2 support; because of this, macOS "Delta" updates (i.e. small 1-3 GB updates that normally appear in System Settings) will **no longer be available** and the full update (±12GB) must be installed each time, as Delta updates only contain the non-AVX2 cache to support Rosetta on Apple Silicon machines. OpenCore patching mechanism relies on these AVX2 instructions.
+
+![Sonoma](Various/Sonoma.png)
 
 ![Ventura](Various/Ventura.png)
 
