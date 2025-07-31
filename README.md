@@ -205,7 +205,7 @@ The embedded 802.11ax wireless [AX201](https://ark.intel.com/content/www/us/en/a
 
 ## CPU Power Management
 
-On latest macOS Ventura and Sonoma installations, a seemingly new **custom** CPU profile is needed for this Intel i7-10710U processor because the applied CPU profile that now comes natively with the `Macmini8,1` SMBIOS is not sufficiently performant in terms of power management. A procedure to create such a custom CPU profile to be used with [CPUFriend](https://github.com/acidanthera/CPUFriend/releases) is described in [a dedicated page here](CPU XCPM/).
+On latest macOS Ventura and Sonoma installations, a seemingly new **custom** CPU profile is needed for this Intel i7-10710U processor because the applied CPU profile that now comes natively with the `Macmini8,1` SMBIOS is not sufficiently performant in terms of power management. A procedure to create such a custom CPU profile to be used with [CPUFriend](https://github.com/acidanthera/CPUFriend/releases) is described in [a dedicated page here](CPU%20XCPM/).
 
 For macOS Monterey and earlier, by injecting `SSDT-PLUG.aml` via OpenCore, we verify that Power Management is present and active as `X86PlatformPlugin` is attached to the first CPU core `PR00` per the [Dortania Guide](https://dortania.github.io/OpenCore-Post-Install/universal/pm.html).
 

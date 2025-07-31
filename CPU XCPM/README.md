@@ -79,7 +79,7 @@ The result of this exercise will be a folder named `CPUFriendDataProvider.kext` 
 
 ## Confirming CPU Profile is in Use
 
-Upon landing on the Desktop again, we launch **Intel Power Gadget** and allow macOS to go idle, while keeping track of the curves. We could also launch **IORegistryExplorer.app** as well, and confirm the profile is loaded under **Root → AppleACPIPlatformExpert → PR00 → AppleACPICPU → cf-frequency-data** where the latter is the actual profile being taken into consideration. In the same tree for the first processor, we will also see `X86PlatformPlugin` being loaded and present, despite the absence of the `SSDT-PLUG.aml` injection.
+Upon landing on the Desktop again, we launch **Intel Power Gadget** and allow macOS to go idle, while keeping track of the curves. We could also launch **IORegistryExplorer.app** as well, and confirm the profile is loaded under **Root → AppleACPIPlatformExpert → PR00 → AppleACPICPU → cf-frequency-data** where the latter is the actual profile being taken into consideration. In the same tree for the first processor, we will also see `X86PlatformPlugin` being loaded and present, despite the absence of the `SSDT-PLUG.aml` injection, together with an entry for the `CPUStates` that are used.
 
 ![AppleACPICPU](AppleACPICPU.png)
 
@@ -116,7 +116,7 @@ Note: No performance warning level has been recorded
 The first command checks that our `CPUFriend.kext` is loaded; the second command outputs parts of
 `cf-frequency-data` meaning our custom CPU profile is correctly injected in our system; the third command counts how many CPUs contain `cf-frequency-data` and in our case, it should be all 12 threads of our Intel i7-10710U processor.
 
-Furthermore, the fourth command shows that our system is _not_ suffering from any sort of throttling whilst providing full CPU performance, while the fifth command confirms that what CPUFriend asked us to enable at the end of the procedure, has been included. Further details are being presented with the last command, where we should see some of the following values:
+Furthermore, the fourth command shows that our system is _not_ suffering from any sort of throttling whilst providing full CPU performance, while the fifth command confirms that what CPUFriendFriend asked us to enable at the end of the procedure, has been included. Further details are being presented with the last command, where we should see some of the following values:
 
 * `xcpm.mode: 1` denotes that XCPM i.e. native Apple power management is active
 * `max_100mhz_ratio: 47` is our maximum CPU multiplier i.e. 47 × 100 MHz = 4.7 GHz i.e. our CPU turbo frequency
