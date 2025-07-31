@@ -79,7 +79,7 @@ The result of this exercise will be a folder named `CPUFriendDataProvider.kext` 
 
 ## Confirming CPU Profile is in Use
 
-Upon landing on the Desktop again, we launch **Intel Power Gadget** and allow macOS to go idle, while keeping track of the curves. We could also launch **IORegistryExplorer.app** as well, and confirm the profile is loaded under **Root → AppleACPIPlatformExpert → PR00 → AppleACPICPU → cf-frequency-data** where the latter is the actual profile being taken into consideration. In the same tree for the first processor, we will also see `X86PlatformPlugin` being loaded and present, despite the absence of the `SSDT-PLUG.aml` injection, together with an entry for the `CPUStates` that are used.
+Upon landing on the Desktop again, we launch **Intel Power Gadget** and allow macOS to go idle, while keeping track of the curves. We could also launch **IORegistryExplorer.app** as well, and confirm the profile is loaded under **Root → AppleACPIPlatformExpert → PR00 → AppleACPICPU → cf-frequency-data** where the latter is the actual profile being taken into consideration. In the same tree for the first processor, we will also see `X86PlatformPlugin` being loaded and present, despite the absence of the `SSDT-PLUG.aml` injection, together with an entry for the `CPUPStates` that are used.
 
 ![AppleACPICPU](AppleACPICPU.png)
 

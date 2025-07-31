@@ -179,23 +179,25 @@ It is thus important to _force_ a `device-id` and an `ig-platform-id` value in O
 
 The ACPI code and justification for each custom SSDT is described in more detail in the [SSDTs](../SSDTs) section.
 
-5. The following kexts are included, defined and required:
+5. The following kexts are included, defined and required in **loading order:**
 
-* [AirportItlwm.kext](https://github.com/OpenIntelWireless/itlwm/releases)
-* [AppleALC.kext](https://github.com/acidanthera/AppleALC/releases)
-* [IntelBluetoothFirmware.kext](https://github.com/OpenIntelWireless/IntelBluetoothFirmware/releases)
-* [IntelBluetoothInjector.kext](https://github.com/OpenIntelWireless/IntelBluetoothFirmware/releases) → removed :warning:
-* [IntelBTPatcher.kext](https://github.com/OpenIntelWireless/IntelBluetoothFirmware/releases)
-* [BlueToolFixup.kext](https://github.com/acidanthera/BrcmPatchRAM/releases)
-* [IntelMausi.kext](https://github.com/acidanthera/IntelMausi/releases)
 * [Lilu.kext](https://github.com/acidanthera/Lilu/releases)
-* [NVMeFix.kext](https://github.com/acidanthera/NVMeFix/releases) → disabled
-* [RestrictEvents.kext](https://github.com/acidanthera/RestrictEvents/releases)
+* [VirtualSMC.kext](https://github.com/acidanthera/VirtualSMC/releases)
 * [SMCProcessor.kext](https://github.com/acidanthera/VirtualSMC/releases)
 * [SMCSuperIO.kext](https://github.com/acidanthera/VirtualSMC/releases)
-* [VirtualSMC.kext](https://github.com/acidanthera/VirtualSMC/releases)
 * [WhateverGreen.kext](https://github.com/acidanthera/WhateverGreen/releases)
+* [AppleALC.kext](https://github.com/acidanthera/AppleALC/releases)
+* [NVMeFix.kext](https://github.com/acidanthera/NVMeFix/releases) → disabled
+* [CPUFriend](https://github.com/acidanthera/CPUFriend/releases)
+* CPUFriendDataProvider.kext
+* [RestrictEvents.kext](https://github.com/acidanthera/RestrictEvents/releases)
 * USBPorts.kext
+* [IntelMausi.kext](https://github.com/acidanthera/IntelMausi/releases)
+* [BlueToolFixup.kext](https://github.com/acidanthera/BrcmPatchRAM/releases)
+* [IntelBluetoothInjector.kext](https://github.com/OpenIntelWireless/IntelBluetoothFirmware/releases) → removed :warning:
+* [IntelBluetoothFirmware.kext](https://github.com/OpenIntelWireless/IntelBluetoothFirmware/releases)
+* [IntelBTPatcher.kext](https://github.com/OpenIntelWireless/IntelBluetoothFirmware/releases)
+* [AirportItlwm.kext](https://github.com/OpenIntelWireless/itlwm/releases)
 
 :warning: Starting from OpenCore 0.7.9 configuration, this NUC will be running **macOS Monterey** and a major change in the loaded kexts has taken place, namely the replacement of `IntelBluetoothInjector.kext` with `BlueToolFixup.kext` so please be aware.
 
