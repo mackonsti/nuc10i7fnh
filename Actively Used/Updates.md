@@ -8,9 +8,9 @@ The following changes (either additions or removals) are present in each configu
 
 **Personal changes:**
 
-* Disabled `SSDT-PLUG.aml` injection; explicitly adding `plugin-type = 1` in recent macOS is no longer necessary, as the `X86PlatformPlugin` driver is loaded by default (see [Dortania comment](https://dortania.github.io/OpenCore-Post-Install/universal/pm.html#enabling-x86platformplugin))
+* Disabled `SSDT-PLUG.aml` injection; explicitly adding `plugin-type = 1` in recent macOS is no longer necessary, as the `X86PlatformPlugin` driver is loaded by default since Monterey 12.3 (see [Dortania comment](https://dortania.github.io/OpenCore-Post-Install/universal/pm.html#enabling-x86platformplugin))
 * Removed boot argument `igfxagdc=0` as it was found to delay monitor wake-up and did not contribute to anything useful
-* Removed unnecessary, disabled arrays that delete `CpuPm` and `Cpu0Ist` tables to simplify configuration file
+* Removed unnecessary, disabled arrays that delete `CpuPm` and `Cpu0Ist` tables, to simplify configuration file
 
 ## OpenCore v1.0.4 Update
 
