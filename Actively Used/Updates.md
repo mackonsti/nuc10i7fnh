@@ -2,6 +2,20 @@
 
 The following changes (either additions or removals) are present in each configuration file per their respective OpenCore release:
 
+## OpenCore v1.0.5 Update
+
+* No changes required to configuration files, no keys were added or removed.
+
+**Personal changes:**
+
+* Disabled `SSDT-PLUG.aml` injection; explicitly adding `plugin-type = 1` in recent macOS is no longer necessary, as the `X86PlatformPlugin` driver is loaded by default (see [Dortania comment](https://dortania.github.io/OpenCore-Post-Install/universal/pm.html#enabling-x86platformplugin))
+* Removed boot argument `igfxagdc=0` as it was found to delay monitor wake-up and did not contribute to anything useful
+* Removed unnecessary, disabled arrays that delete `CpuPm` and `Cpu0Ist` tables to simplify configuration file
+
+## OpenCore v1.0.4 Update
+
+* Booter → Quirks → added new required key: `ClearTaskSwitchBit` as "false" boolean
+
 ## OpenCore v1.0.2 Update
 
 * UEFI → Unload → added new required (empty) array
