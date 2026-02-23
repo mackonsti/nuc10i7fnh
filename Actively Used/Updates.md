@@ -2,6 +2,19 @@
 
 The following changes (either additions or removals) are present in each configuration file per their respective OpenCore release:
 
+## OpenCore v1.0.6 Update
+
+* DeviceProperties → Add → `PciRoot(0x0)/Pci(0x1d,0x0)/Pci(0x0,0x0)` → added `pci-aspm-enable` key as `AQ==` data
+* Misc → Boot → changed key `PollAppleHotKeys` value to "true" boolean
+* NVRAM → Add → `7C436110-AB2A-4BBB-A880-FE41995C9F82` → added required string `bluetoothInternalControllerInfo` and default data
+* NVRAM → Add → `7C436110-AB2A-4BBB-A880-FE41995C9F82` → added required string `bluetoothExternalDongleFailed` and default data
+* NVRAM → Delete → `7C436110-AB2A-4BBB-A880-FE41995C9F82` → added required string `bluetoothInternalControllerInfo` per OC sample
+* NVRAM → Delete → `7C436110-AB2A-4BBB-A880-FE41995C9F82` → added required string `bluetoothExternalDongleFailed` per OC sample
+
+**Personal changes:**
+
+* Kernel → Add → added and enabled new required kernel extension `CPUFriend.kext` and the needed `CPUFriendDataProvider.kext`
+
 ## OpenCore v1.0.5 Update
 
 * No changes required to configuration files, no keys were added or removed.
@@ -59,7 +72,7 @@ The following changes (either additions or removals) are present in each configu
 
 ## OpenCore v0.9.4 Update
 
-* Misc → BlessOverride → added new required key: `InstanceIdentifier` as empty string
+* Misc → Boot → added new required key: `InstanceIdentifier` as empty string
 
 ## OpenCore v0.9.3 Update
 

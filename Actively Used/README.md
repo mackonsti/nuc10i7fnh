@@ -189,9 +189,9 @@ The ACPI code and justification for each custom SSDT is described in more detail
 * [AppleALC.kext](https://github.com/acidanthera/AppleALC/releases)
 * [NVMeFix.kext](https://github.com/acidanthera/NVMeFix/releases) → disabled
 * [CPUFriend](https://github.com/acidanthera/CPUFriend/releases)
-* CPUFriendDataProvider.kext
+* CPUFriendDataProvider.kext → generated
 * [RestrictEvents.kext](https://github.com/acidanthera/RestrictEvents/releases)
-* USBPorts.kext
+* USBPorts.kext → generated
 * [IntelMausi.kext](https://github.com/acidanthera/IntelMausi/releases)
 * [BlueToolFixup.kext](https://github.com/acidanthera/BrcmPatchRAM/releases)
 * [IntelBluetoothInjector.kext](https://github.com/OpenIntelWireless/IntelBluetoothFirmware/releases) → removed :warning:
