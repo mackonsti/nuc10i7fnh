@@ -368,6 +368,8 @@
 				<string>AirPort Extreme</string>
 				<key>name</key>
 				<string>AirPort</string>
+				<key>pci-aspm-default</key>
+				<data>Ag==</data>
 				<key>model</key>
 				<string>Intel Wireless AX201 Network Controller</string>
 			</dict>
@@ -380,8 +382,8 @@
 			</dict>
 			<key>PciRoot(0x0)/Pci(0x1d,0x0)/Pci(0x0,0x0)</key>
 			<dict>
-				<key>pci-aspm-enable</key>
-				<data>AQ==</data>
+				<key>pci-aspm-default</key>
+				<data>Ag==</data>
 				<key>model</key>
 				<string>WD Black SN750 NVMe Controller</string>
 			</dict>
@@ -770,7 +772,7 @@
 			<key>PowerTimeoutKernelPanic</key>
 			<false/>
 			<key>ProvideCurrentCpuInfo</key>
-			<false/>
+			<true/>
 			<key>SetApfsTrimTimeout</key>
 			<integer>-1</integer>
 			<key>ThirdPartyDrives</key>

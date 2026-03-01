@@ -66,7 +66,7 @@
 				<key>Comment</key>
 				<string>SSDT for PLUG</string>
 				<key>Enabled</key>
-				<true/>
+				<false/>
 				<key>Path</key>
 				<string>SSDT-PLUG.aml</string>
 			</dict>
@@ -904,7 +904,7 @@
 		<key>Security</key>
 		<dict>
 			<key>AllowSetDefault</key>
-			<true/>
+			<false/>
 			<key>ApECID</key>
 			<integer>0</integer>
 			<key>AuthRestart</key>
@@ -1141,6 +1141,8 @@
 			<array>
 				<string>boot-args</string>
 				<string>ForceDisplayRotationInEFI</string>
+				<string>bluetoothInternalControllerInfo</string>
+				<string>bluetoothExternalDongleFailed</string>
 			</array>
 		</dict>
 		<key>LegacyOverwrite</key>

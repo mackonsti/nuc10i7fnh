@@ -6,10 +6,10 @@ The following changes (either additions or removals) are present in each configu
 
 * DeviceProperties → Add → `PciRoot(0x0)/Pci(0x1d,0x0)/Pci(0x0,0x0)` → added `pci-aspm-enable` key as `AQ==` data
 * Misc → Boot → changed key `PollAppleHotKeys` value to "true" boolean
-* NVRAM → Add → `7C436110-AB2A-4BBB-A880-FE41995C9F82` → added required string `bluetoothInternalControllerInfo` and default data
-* NVRAM → Add → `7C436110-AB2A-4BBB-A880-FE41995C9F82` → added required string `bluetoothExternalDongleFailed` and default data
-* NVRAM → Delete → `7C436110-AB2A-4BBB-A880-FE41995C9F82` → added required string `bluetoothInternalControllerInfo` per OC sample
-* NVRAM → Delete → `7C436110-AB2A-4BBB-A880-FE41995C9F82` → added required string `bluetoothExternalDongleFailed` per OC sample
+* NVRAM → Add → `7C436110-AB2A-4BBB-A880-FE41995C9F82` → added required string `bluetoothInternalControllerInfo` and data
+* NVRAM → Add → `7C436110-AB2A-4BBB-A880-FE41995C9F82` → added required string `bluetoothExternalDongleFailed` and data
+* NVRAM → Delete → `7C436110-AB2A-4BBB-A880-FE41995C9F82` → added required string `bluetoothInternalControllerInfo`
+* NVRAM → Delete → `7C436110-AB2A-4BBB-A880-FE41995C9F82` → added required string `bluetoothExternalDongleFailed`
 
 **Personal changes:**
 
