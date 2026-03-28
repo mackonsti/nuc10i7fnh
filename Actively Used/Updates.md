@@ -2,6 +2,10 @@
 
 The following changes (either additions or removals) are present in each configuration file per their respective OpenCore release:
 
+## OpenCore v1.0.7 Update
+
+* No changes required to configuration files, no keys were added or removed.
+
 ## OpenCore v1.0.6 Update
 
 * DeviceProperties → Add → `PciRoot(0x0)/Pci(0x1d,0x0)/Pci(0x0,0x0)` → added `pci-aspm-enable` key as `AQ==` data

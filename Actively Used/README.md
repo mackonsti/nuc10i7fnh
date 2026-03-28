@@ -163,7 +163,16 @@ It is thus important to _force_ a `device-id` and an `ig-platform-id` value in O
 
 :warning: Starting from OpenCore 0.7.8 configuration, a more precise port definition was added in order to correctly identify the embedded HDMI port. For more information, consult the configuration [updates](Updates.md) history.
 
-4. The following custom SSDTs are included, defined and enabled:
+4. Setting Active State Power Management (ASPM):
+
+Both the NVMe and Wireless controllers can benefit by defining (i.e. setting) the ASPM behaviour to L1 - Lower Power Standby state. This can be achieved by injecting the correct parameters in the devices themselves:
+```
+	<key>pci-aspm-default</key>
+	<data>AgAAAA==</data>
+```
+This injection (after rebooting) will result in **Hackintosh** tool confirming both devices having switched from "Disabled" to L1 (Lower Power Standby) state; check the "PCIe" tab of the tool and the "ASPM" column for each specific device. The idea came from [Olarila](https://olarila.com/topic/39702-how-to-enable-nvme-ssd-power-management-with-aspm-on-hackintosh/) and you can read much more on ASPM over [here](https://phisonblog.com/the-importance-of-efficient-ssd-power-management-2/).
+
+5. The following custom SSDTs are included, defined and enabled:
 
 * SSDT-APPLE.aml
 * SSDT-AWAC.aml
@@ -179,7 +188,7 @@ It is thus important to _force_ a `device-id` and an `ig-platform-id` value in O
 
 The ACPI code and justification for each custom SSDT is described in more detail in the [SSDTs](../SSDTs) section.
 
-5. The following kexts are included, defined and required in **loading order:**
+6. The following kexts are included, defined and required in **loading order:**
 
 * [Lilu.kext](https://github.com/acidanthera/Lilu/releases)
 * [VirtualSMC.kext](https://github.com/acidanthera/VirtualSMC/releases)
@@ -223,6 +232,18 @@ These `pmset` parameters above achieve the following:
 * Disable `Proximity Wake` → does not allow waking from an iPhone or an Apple Watch when they come near;
 * Disable `TCP Keep Alive` → prevents the mechanism that wakes the computer up every 2 hours.
 
+## Error Installing Differential (Delta) Update
+
+With recent OS versions, there seems to be an issue when selecting the _differential_ macOS update i.e. "Delta" that is usually smaller in size, compared to the full installer that counts many Gigabytes. Updating macOS via System Settings (i.e. System Preferences) may produce an **error** after downloading the package and during "preparation".
+
+According to user **Winthryth** in this [Reddit post](https://www.reddit.com/r/hackintosh/comments/10km392/ventura_incremental_update_smaller_update_always/) the fault lies in the fact that some active kexts seemingly use Lilu to dynamically patch macOS binaries during boot (expected) but that breaks the Delta update during validation.
+
+For macOS **Monterey** and **Ventura** the kexts found to block these updates are `BlueToolFixup.kext` and `RestrictEvents.kext` so disabling these in the OpenCore configuration _temporarily_, allows the Delta macOS update to succeed. They can be re-enabled later without issues.
+
+For macOS **Sonoma** onwards however, there is a need to keep `RestrictEvents.kext` enabled in the OpenCore configuration and also add the argument `revpatch=sbvmm` in the configuration's `boot-args` (NVRAM section) for this Mac model to correctly detect OS updates. Users reported that disabling `BlueToolFixup.kext` would allow macOS to install the Delta update, so it is advised to disable BTLE altogether, and restore the configuration _after_ the update.
+
+If either solution fails, then downloading and installing the full macOS Installer for that new build will always work, but will take a little longer (and more space). Do not forget to backup. More on installers [here](https://www.macworld.com/article/671911/how-to-get-old-macos-download-big-sur-catalina-mojave-and-more.html).
+
 ## Volume Hash Mismatch Error
 
 This new error started to recently appear after the update to **Montery OS** and late OpenCore 0.8.x series.
@@ -243,16 +264,3 @@ The following check-list is based on the various messages posted on [Reddit](htt
 * OpenCore setting `UEFI` → `ProtocolOverrides` → `HashServices` set to TRUE as expected (CPU is newer to Haswell) :white_check_mark:
 
 Insofar, no definitive solution has been proposed or validated.
-
-## Error Installing Differential (Delta) Update
-
-With recent OS versions, there seems to be an issue when selecting the _differential_ macOS update i.e. "Delta" that is usually smaller in size, compared to the full installer that counts many Gigabytes. Updating macOS via System Settings (i.e. System Preferences) may produce an **error** after downloading the package and during "preparation".
-
-According to user **Winthryth** in this [Reddit post](https://www.reddit.com/r/hackintosh/comments/10km392/ventura_incremental_update_smaller_update_always/) the fault lies in the fact that some active kexts seemingly use Lilu to dynamically patch macOS binaries during boot (expected) but that breaks the Delta update during validation.
-
-For macOS **Monterey** and **Ventura** the kexts found to block these updates are `BlueToolFixup.kext` and `RestrictEvents.kext` so disabling these in the OpenCore configuration _temporarily_, allows the Delta macOS update to succeed. They can be re-enabled later without issues.
-
-For macOS **Sonoma** however, there is a need to keep `RestrictEvents.kext` enabled in the OpenCore configuration and also add the argument `revpatch=sbvmm` in the configuration's `boot-args` (NVRAM section) for this Mac model to correctly detect OS updates.
-
-If either solution fails, then downloading and installing the full macOS Installer for that new build will always work, but will take a little longer (and more space). Do not forget to backup.
-More on installers [here](https://www.macworld.com/article/671911/how-to-get-old-macos-download-big-sur-catalina-mojave-and-more.html).
