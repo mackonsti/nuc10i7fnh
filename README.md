@@ -19,7 +19,7 @@ This repository contains personal work and files, developed and maintained for a
 - [CPU Fan Reading](#cpu-fan-reading-support)
 - [Wireless Connectivity](#wireless-connectivity)
 - [CPU Power Management](#cpu-power-management)
-- [Changes By macOS 13](#changes-brought-about-by-macos-13)
+- [Changes By macOS 13 and Later](#changes-brought-about-by-macos-13-and-later)
 - [Changes By macOS 12](#changes-brought-about-by-macos-12)
 - [Changes By macOS 11](#changes-brought-about-by-macos-11)
 
@@ -213,7 +213,7 @@ For macOS Monterey and earlier, by injecting `SSDT-PLUG.aml` via OpenCore, we ve
 
 ![PowerGadget](Various/PowerGadget.png)
 
-## Changes Brought About by macOS 13 and later
+## Changes Brought About by macOS 13 and Later
 
 MacOS 13.x _Ventura_ and later [drops support for pre-Haswell CPUs](https://dortania.github.io/OpenCore-Install-Guide/extras/ventura.html#table-of-contents). Moreover, much of userspace now requires AVX2 support; because of this, macOS "Delta" updates (i.e. small 1-3 GB updates that normally appear in System Settings) will **no longer be available** and the full update (±12GB) must be installed each time, as Delta updates only contain the non-AVX2 cache to support Rosetta on Apple Silicon machines. OpenCore patching mechanism relies on these AVX2 instructions.
 
